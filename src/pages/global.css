@@ -1,0 +1,20 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+  box-sizing: inherit;
+}
+body{
+  box-sizing: border-box;
+}
+::selection{
+    color:blue;
+    background-color: wheat;
+}
+.MuiBottomNavigationAction-label{
+    font-size: 1.5rem !important;
+}
