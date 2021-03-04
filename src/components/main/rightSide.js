@@ -6,8 +6,9 @@ import {
   StyledListItemIcon,
   StyledListItemText,
 } from "../../theme/styled"
+import Wave from "../../assets/wave.svg"
 
-const drawerWidth = 250
+const drawerWidth = 225
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
@@ -24,14 +25,20 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    background: "#468189",
+    background: "#6A0971",
+  },
+  wave:{
+    position: "fixed",
+    bottom: 0,
+    left:0,
+    paddingBottom: 10,
   },
 
   item: {
     margin: ".8em 0em",
       textAlign:"center",
     "&:hover": {
-      background: "#468189",
+      background: "#6A0971",
     },
   },
 }))
@@ -77,6 +84,9 @@ const RightSide = () => {
           </StyledListItemText>
         </StyledListItem>
       </List>
+      <div className={classes.wave}>
+              <Wave />
+            </div>
     </Drawer>
   )
 }

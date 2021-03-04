@@ -2,25 +2,25 @@ import { ListItem, ListItemIcon, ListItemText, withStyles } from "@material-ui/c
 
 export const StyledListItem=withStyles({
     root:{
-        background:"#468189",
+        background:"#6A0971",
         color:"#eee",
         
         '&:hover':{
-            background:"#37666C"
+            background:"#47064B"
         }
     },
 })(ListItem);
 
 export const StyledListItemText=withStyles({
     primary:{
-        fontSize:"16px",
+        fontSize:"13px",
         fontWeight:"600"
     }
 })(ListItemText)
 
 export const StyledListItemIcon=withStyles({
     root:{
-        fontSize:"32px",
+        fontSize:"30px",
         color:"#eee",
     }
 })(ListItemIcon)

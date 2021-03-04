@@ -5,7 +5,9 @@ import BackgroundImage from "gatsby-background-image"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    background: "#212121",
+    background: '#3d3d3d',
+
+
     height: "150vh",
     margin: "0 auto",
     position:"relative"
@@ -21,6 +23,11 @@ const useStyles = makeStyles(theme => ({
   footer: {
     height: "10vh",
     width: "100%",
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"flex-end",
+    color:"#eee",
+    fontSize:"2rem"
   },
   main: {
     height: "105vh",
@@ -61,7 +68,7 @@ const Layout = props => {
   const classes = useStyles()
   const loadImage = () => {
     const index = Math.floor(Math.random() * imageData?.length)
-    return imageData[index]
+    return imageData[5]
   }
   const img = loadImage()
   return (
@@ -81,16 +88,7 @@ const Layout = props => {
                 src={logoData.src}
                 alt={"A Bartók és Bartók Kft logója"}
               />
-              <div>
-                <Typography gutterBottom variant="h3">
-                  BARTÓK és BARTÓK
-                </Typography>
-              </div>
-              <div>
-                <Typography variant="h4">
-                  Adószakértő, Könyvelő és Tanácsadó Kft.
-                </Typography>
-              </div>
+
             </Grid>
           </BackgroundImage>
         </AppBar>
@@ -101,8 +99,9 @@ const Layout = props => {
         </Grid>
 
         <BackgroundImage fluid={img?.node?.childImageSharp?.fluid}>
-          <Grid item xs={12} className={classes.footer}>
-            {/* <Bottom /> */}
+          <Grid item xs={12} className={classes.footer} direction="column">
+            <Typography variant="h5"> © {new Date().getFullYear()} Bartók és Bartók Kft.</Typography>
+            <Typography>Created by Pityubak</Typography>
           </Grid>
         </BackgroundImage>
       </Grid>

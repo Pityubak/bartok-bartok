@@ -4,7 +4,9 @@ import Main from "../components/main/main"
 
 const IndexPage=()=>(
     <Layout>
-        <Main/>
+        <Main>
+            
+        </Main>
     </Layout>
 )
 
