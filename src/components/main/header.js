@@ -1,10 +1,4 @@
-import {
-  Collapse,
-  Drawer,
-  List,
-  makeStyles,
-  withStyles,
-} from "@material-ui/core"
+import { Collapse, Drawer, List, makeStyles } from "@material-ui/core"
 import {
   Equalizer,
   ExpandLess,
@@ -25,6 +19,8 @@ import {
 } from "../../theme/styled"
 import Wave from "../../assets/wave.svg"
 import { Link } from "gatsby"
+import { useDispatch, useSelector } from "react-redux"
+import { changeIndex } from "../../slices/menu"
 
 const drawerWidth = 225
 
@@ -66,12 +62,18 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     paddingBottom: 10,
   },
+  link: {
+    textDecoration: "none",
+  },
 }))
 
 const Header = () => {
   const classes = useStyles()
-  const [index, setIndex] = useState(0)
+  // const [index, setIndex] = useState(0)
   const [selected, setSelected] = useState(0)
+
+  const { index } = useSelector(state => state.menu)
+  const dispatch = useDispatch()
 
   return (
     <Drawer
@@ -84,7 +86,7 @@ const Header = () => {
       anchor="left"
     >
       <List>
-        <Link to="/bemutatkozas/">
+        <Link className={classes.link} to="/bemutatkozas/">
           <StyledListItem
             selected={selected === 1}
             button
@@ -104,9 +106,9 @@ const Header = () => {
           key={"services"}
           onClick={() => {
             if (index === 0) {
-              setIndex(1)
+              dispatch(changeIndex(1))
             } else {
-              setIndex(0)
+              dispatch(changeIndex(0))
             }
             setSelected(2)
           }}
@@ -119,7 +121,10 @@ const Header = () => {
         </StyledListItem>
         <Collapse in={index > 0} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <Link to="/szolgaltatasaink/jarulek-szakertes/">
+            <Link
+              className={classes.link}
+              to="/szolgaltatasaink/jarulek-szakertes/"
+            >
               <StyledListItem
                 button
                 className={classes.nested}
@@ -138,9 +143,9 @@ const Header = () => {
               className={classes.nested}
               onClick={() => {
                 if (index !== 2) {
-                  setIndex(2)
+                  dispatch(changeIndex(2))
                 } else {
-                  setIndex(1)
+                  dispatch(changeIndex(1))
                 }
                 setSelected(4)
               }}
@@ -153,7 +158,10 @@ const Header = () => {
             </StyledListItem>
             <Collapse in={index === 2} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                <Link to="/szolgaltatasaink/szamviteli-szolgaltatas/adobevallas/">
+                <Link
+                  className={classes.link}
+                  to="/szolgaltatasaink/szamviteli-szolgaltatas/adobevallas/"
+                >
                   <StyledListItem
                     button
                     className={classes.deepNested}
@@ -166,7 +174,10 @@ const Header = () => {
                     <StyledListItemText primary="Adóbevallás" />
                   </StyledListItem>
                 </Link>
-                <Link to="/szolgaltatasaink/szamviteli-szolgaltatas/berszamfejtes-munkaugy/">
+                <Link
+                  className={classes.link}
+                  to="/szolgaltatasaink/szamviteli-szolgaltatas/berszamfejtes-munkaugy/"
+                >
                   <StyledListItem
                     button
                     className={classes.deepNested}
@@ -179,7 +190,10 @@ const Header = () => {
                     <StyledListItemText primary="Bérszámfejtés, munkaügy" />
                   </StyledListItem>
                 </Link>
-                <Link to="/szolgaltatasaink/szamviteli-szolgaltatas/szabalyzat-keszites/">
+                <Link
+                  className={classes.link}
+                  to="/szolgaltatasaink/szamviteli-szolgaltatas/szabalyzat-keszites/"
+                >
                   <StyledListItem
                     button
                     className={classes.deepNested}
@@ -192,7 +206,10 @@ const Header = () => {
                     <StyledListItemText primary="Szabályzat készítés" />
                   </StyledListItem>
                 </Link>
-                <Link to="/szolgaltatasaink/szamviteli-szolgaltatas/cegalapitashoz-segitsegnyujtas/">
+                <Link
+                  className={classes.link}
+                  to="/szolgaltatasaink/szamviteli-szolgaltatas/cegalapitashoz-segitsegnyujtas/"
+                >
                   <StyledListItem
                     button
                     className={classes.deepNested}

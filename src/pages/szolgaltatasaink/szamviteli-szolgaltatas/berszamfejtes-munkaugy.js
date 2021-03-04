@@ -6,7 +6,7 @@ import Main from "../../../components/main/main";
 const PayrollPage=()=>(
     <Layout>
         <Main>
-            
+            <h1>Bérszámfejtés, munkaügy</h1>
         </Main>
     </Layout>
 )

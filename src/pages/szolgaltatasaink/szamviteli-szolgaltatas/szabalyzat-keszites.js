@@ -6,7 +6,7 @@ import Main from "../../../components/main/main";
 const RegulationsPage=()=>(
     <Layout>
         <Main>
-            
+            <h1>Szabályzat készítés</h1>
         </Main>
     </Layout>
 )

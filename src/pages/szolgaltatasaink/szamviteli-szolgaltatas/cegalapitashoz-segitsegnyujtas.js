@@ -6,7 +6,7 @@ import Main from "../../../components/main/main";
 const CompanyPage=()=>(
     <Layout>
         <Main>
-            
+            <h1>Cégalapításhoz segítségnyújtás</h1>
         </Main>
     </Layout>
 )

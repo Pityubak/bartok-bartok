@@ -6,7 +6,7 @@ import Main from "../../components/main/main";
 const JuridicalPage=()=>(
     <Layout>
         <Main>
-            
+            <h1>Igazságügyi adó és járulék szakértés</h1>
         </Main>
     </Layout>
 )

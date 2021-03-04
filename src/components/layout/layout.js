@@ -68,7 +68,7 @@ const Layout = props => {
   const classes = useStyles()
   const loadImage = () => {
     const index = Math.floor(Math.random() * imageData?.length)
-    return imageData[5]
+    return imageData[index]
   }
   const img = loadImage()
   return (

@@ -6,7 +6,7 @@ import Main from "../../../components/main/main";
 const TaxPage=()=>(
     <Layout>
         <Main>
-            
+            <h1>Adóbevallás</h1>
         </Main>
     </Layout>
 )

@@ -5,7 +5,7 @@ import Main from "../components/main/main";
 const AboutPage=()=>(
     <Layout>
         <Main>
-            
+            <h1>Bemutatkozás</h1>
         </Main>
     </Layout>
 )
