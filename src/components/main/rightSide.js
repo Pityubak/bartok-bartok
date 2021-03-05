@@ -2,11 +2,14 @@ import {
   createStyles,
   Divider,
   Drawer,
+  FormControlLabel,
   List,
   makeStyles,
+  Switch,
+  Tooltip,
   withStyles,
 } from "@material-ui/core"
-import { Business, Email, Phone } from "@material-ui/icons"
+import { BrightnessLow, Business, Email, Phone, SettingsBrightness } from "@material-ui/icons"
 import React from "react"
 import {
   StyledListItem,
@@ -54,6 +57,19 @@ const useStyles = makeStyles(theme => ({
     height: "125px",
     width: "100%",
   },
+  themeIcon:{
+    display:"flex",
+    flexDirection:"column",
+    alignItems:"center",
+    justifyContent:"center",
+    color:"#fff",
+    fontSize:"6rem",
+    cursor:"pointer",
+    transition:"all .3s ease-in",
+    '&:hover':{
+      color:"#212121"
+    }
+  }
 }))
 const VerticalListItem = withStyles({
   root: {
@@ -64,12 +80,12 @@ const VerticalListItem = withStyles({
   },
 })(StyledListItem)
 
-const Icon=withStyles({
-  root:{
+const Icon = withStyles({
+  root: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-  }
+  },
 })(StyledListItemIcon)
 const RightSide = () => {
   const classes = useStyles()
@@ -130,6 +146,12 @@ const RightSide = () => {
           <StyledListItemText>Cégjegyzékszám: 07-01-018288</StyledListItemText>
         </StyledListItem>
       </List>
+      <Tooltip title="Sötét témára váltás" >
+        <span className={classes.themeIcon}>
+          <SettingsBrightness fontSize="large" />
+            Teszt
+        </span>
+      </Tooltip>
       <div className={classes.wave}>
         <Wave />
       </div>

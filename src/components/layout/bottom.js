@@ -8,6 +8,7 @@ import { BusinessCenter, Face, SettingsApplications } from "@material-ui/icons"
 import { Link } from "gatsby"
 import { useDispatch, useSelector } from "react-redux"
 import { changeBottom } from "../../slices/menu"
+import { Tooltip } from "@material-ui/core"
 
 const useStyles = makeStyles({
   root: {
@@ -24,9 +25,10 @@ const useStyles = makeStyles({
     '&:hover':{
       color:"#A1171B"
     },
-    // '&:focus':{
-    //   color:"#A1171B"
-    // }
+  },
+  tooltip:{
+    fontSize:"1.6rem",
+    zIndex:"3000"
   },
 })
 
@@ -49,26 +51,30 @@ export default function Bottom() {
       className={classes.root}
     >
       
-        <BottomNavigationAction
+     <Tooltip className={classes.tooltip} title={"Tovább az Üzemeltető aloldalra"} arrow >
+     <BottomNavigationAction
           label="Üzemeltető"
           value="recents"
           icon={<Link className={classes.link}
            to="/uzemelteto/"><BusinessCenter style={style} /></Link>}
         />
+     </Tooltip>
    
-      
+     <Tooltip className={classes.tooltip} title={"Tovább a Szolgáltatásaink aloldalra"} arrow >
         <BottomNavigationAction
           label="Szolgáltatásaink"
           value="favorites"
           icon={<Link className={classes.link} to="/szolgaltatasaink/"><SettingsApplications style={style} /></Link>}
         />
+           </Tooltip>
      
-      
+     <Tooltip className={classes.tooltip} title={"Tovább a Munkatársaink aloldalra"} arrow >
         <BottomNavigationAction
           label="Munkatársaink"
           value="nearby"
           icon={<Link className={classes.link} to="/munkatarsaink/"><Face style={style} /></Link>}
         />
+           </Tooltip>
       
     </BottomNavigation>
   )

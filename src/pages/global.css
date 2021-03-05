@@ -37,3 +37,9 @@ body{
 .MuiTypography-body2{
   font-size: 1.5rem;
 }
+.MuiTooltip-tooltip{
+  font-size: 1.5rem;
+}
+.MuiSvgIcon-fontSizeLarge{
+  font-size: 3rem;
+}

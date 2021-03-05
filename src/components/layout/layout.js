@@ -49,7 +49,7 @@ const Layout = props => {
   const data = useStaticQuery(
     graphql`
       query {
-        allFile(filter: { dir: { regex: "/background/" } }) {
+        allFile(filter: { dir: { regex: "/background_light/" } }) {
           edges {
             node {
               id
@@ -61,7 +61,7 @@ const Layout = props => {
             }
           }
         }
-        icon: file(relativePath: { eq: "logo1.png" }) {
+        icon: file(relativePath: { eq: "logo2.png" }) {
           childImageSharp {
             fluid(quality: 90, maxWidth: 100) {
               ...GatsbyImageSharpFluid_withWebp
