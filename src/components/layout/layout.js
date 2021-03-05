@@ -5,7 +5,7 @@ import BackgroundImage from "gatsby-background-image"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    background: '#3d3d3d',
+    background: '#59594A',
 
 
     height: "150vh",
@@ -99,7 +99,7 @@ const Layout = props => {
         </Grid>
 
         <BackgroundImage fluid={img?.node?.childImageSharp?.fluid}>
-          <Grid item xs={12} className={classes.footer} direction="column">
+          <Grid container xs={12} className={classes.footer} direction="column">
             <Typography variant="h5"> © {new Date().getFullYear()} Bartók és Bartók Kft.</Typography>
             <Typography>Created by Pityubak</Typography>
           </Grid>

@@ -2,11 +2,12 @@ import { ListItem, ListItemIcon, ListItemText, withStyles } from "@material-ui/c
 
 export const StyledListItem=withStyles({
     root:{
-        background:"#6A0971",
-        color:"#eee",
-        
+        width:"100%",
+        background:"#A1171B",
+        color:"#fff",
+        transition:"all .4s ease",
         '&:hover':{
-            background:"#47064B"
+            background:"#781115"
         }
     },
 })(ListItem);

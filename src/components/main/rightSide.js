@@ -7,6 +7,8 @@ import {
   StyledListItemText,
 } from "../../theme/styled"
 import Wave from "../../assets/wave.svg"
+import { graphql, useStaticQuery } from "gatsby"
+import BackgroundImage from "gatsby-background-image"
 
 const drawerWidth = 225
 const useStyles = makeStyles(theme => ({
@@ -25,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    background: "#6A0971",
+    background: "#A1171B",
   },
   wave:{
     position: "fixed",
@@ -38,12 +40,35 @@ const useStyles = makeStyles(theme => ({
     margin: ".8em 0em",
       textAlign:"center",
     "&:hover": {
-      background: "#6A0971",
+      background: "#A1171B",
     },
   },
+  fluid:{
+    height:"125px",
+    width:"100%",
+  
+  }
 }))
 const RightSide = () => {
   const classes = useStyles()
+  const data = useStaticQuery(
+    graphql`
+      query {
+        bg: file(relativePath: { eq: "temporary.webp" }) {
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 600) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
+    `
+  )
+
+  const fluid = [
+    // `linear-gradient(153deg, rgba(33, 33, 33, .6) 0%, rgba(33, 33, 33, .6) 70%)`,
+    data.bg.childImageSharp.fluid,
+  ]
   return (
     <Drawer
       anchor="right"
@@ -53,6 +78,9 @@ const RightSide = () => {
         paper: classes.drawerPaper,
       }}
     >
+      <BackgroundImage fluid={fluid}>
+        <div className={classes.fluid}></div>
+      </BackgroundImage>
       <List>
         <StyledListItem className={classes.item}>
           <StyledListItemIcon>

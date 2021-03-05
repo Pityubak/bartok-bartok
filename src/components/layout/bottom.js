@@ -6,6 +6,8 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction"
 import LocationOnIcon from "@material-ui/icons/LocationOn"
 import { BusinessCenter, SettingsApplications } from "@material-ui/icons"
 import { Link } from "gatsby"
+import { useDispatch, useSelector } from "react-redux"
+import { changeBottom } from "../../slices/menu"
 
 const useStyles = makeStyles({
   root: {
@@ -18,28 +20,31 @@ const useStyles = makeStyles({
   link: {
     textDecoration: "none",
     outline:"none",
-    color:"#A97C73",
-    '&:active':{
-      color:"red"
-    }
+    color:"#0F8B8D",
+    '&:hover':{
+      color:"#A1171B"
+    },
+    // '&:focus':{
+    //   color:"#A1171B"
+    // }
   },
 })
 
 export default function Bottom() {
   const classes = useStyles()
-  const [value, setValue] = React.useState("recents")
-
+  const dispatch=useDispatch();
   const handleChange = (event, newValue) => {
-    setValue(newValue)
+    dispatch(changeBottom(newValue))
   }
   const style = {
     fontSize: "42px",
   }
-
+  
+  const {bottom}=useSelector(state=>state.menu)
   return (
     <BottomNavigation
-    showLabels
-      value={value}
+     showLabels
+      value={bottom}
       onChange={handleChange}
       className={classes.root}
     >
@@ -47,7 +52,8 @@ export default function Bottom() {
         <BottomNavigationAction
           label="Üzemeltető"
           value="recents"
-          icon={<Link className={classes.link} to="/uzemelteto/"><BusinessCenter style={style} /></Link>}
+          icon={<Link className={classes.link}
+           to="/uzemelteto/"><BusinessCenter style={style} /></Link>}
         />
    
       

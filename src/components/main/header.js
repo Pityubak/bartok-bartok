@@ -20,7 +20,7 @@ import {
 import Wave from "../../assets/wave.svg"
 import { Link } from "gatsby"
 import { useDispatch, useSelector } from "react-redux"
-import { changeIndex } from "../../slices/menu"
+import { changeIndex, changeSelected } from "../../slices/menu"
 
 const drawerWidth = 225
 
@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    background: "#6A0971",
+    background: "#A1171B",
     position: "absolute",
     transform: "none",
   },
@@ -69,15 +69,13 @@ const useStyles = makeStyles(theme => ({
 
 const Header = () => {
   const classes = useStyles()
-  // const [index, setIndex] = useState(0)
-  const [selected, setSelected] = useState(0)
 
-  const { index } = useSelector(state => state.menu)
+
+  const { index, selected } = useSelector(state => state.menu)
   const dispatch = useDispatch()
 
   return (
     <Drawer
-      containerStyle={{ transform: "none" }}
       className={classes.drawer}
       variant="permanent"
       classes={{
@@ -91,7 +89,7 @@ const Header = () => {
             selected={selected === 1}
             button
             key={"about"}
-            onClick={() => setSelected(1)}
+            onClick={() => dispatch(changeSelected(1))}
           >
             <StyledListItemIcon>
               <Info fontSize="large" />
@@ -110,7 +108,7 @@ const Header = () => {
             } else {
               dispatch(changeIndex(0))
             }
-            setSelected(2)
+            dispatch(changeSelected(2))
           }}
         >
           <StyledListItemText>
@@ -129,7 +127,7 @@ const Header = () => {
                 button
                 className={classes.nested}
                 selected={selected === 3}
-                onClick={() => setSelected(3)}
+                onClick={() => dispatch(changeSelected(3))}
               >
                 <StyledListItemIcon>
                   <Equalizer fontSize="large" />
@@ -147,7 +145,7 @@ const Header = () => {
                 } else {
                   dispatch(changeIndex(1))
                 }
-                setSelected(4)
+                dispatch(changeSelected(4))
               }}
             >
               <StyledListItemIcon>
@@ -166,7 +164,7 @@ const Header = () => {
                     button
                     className={classes.deepNested}
                     selected={selected === 5}
-                    onClick={() => setSelected(5)}
+                    onClick={() => dispatch(changeSelected(5))}
                   >
                     <StyledListItemIcon>
                       <Money fontSize="large" />
@@ -182,7 +180,7 @@ const Header = () => {
                     button
                     className={classes.deepNested}
                     selected={selected === 6}
-                    onClick={() => setSelected(6)}
+                    onClick={() => dispatch(changeSelected(6))}
                   >
                     <StyledListItemIcon>
                       <MonetizationOn fontSize="large" />
@@ -198,7 +196,7 @@ const Header = () => {
                     button
                     className={classes.deepNested}
                     selected={selected === 7}
-                    onClick={() => setSelected(7)}
+                    onClick={() => dispatch(changeSelected(7))}
                   >
                     <StyledListItemIcon>
                       <Gavel fontSize="large" />
@@ -214,7 +212,7 @@ const Header = () => {
                     button
                     className={classes.deepNested}
                     selected={selected === 8}
-                    onClick={() => setSelected(8)}
+                    onClick={() => dispatch(changeSelected(8))}
                   >
                     <StyledListItemIcon>
                       <LiveHelp fontSize="large" />

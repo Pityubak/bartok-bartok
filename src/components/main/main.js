@@ -1,21 +1,17 @@
 import { Divider, makeStyles, Paper, Typography } from "@material-ui/core"
 import React from "react"
 import Bottom from "../layout/bottom"
-import Content from "./content"
+
 import Header from "./header"
 import RightSide from "./rightSide"
 
 const useStyles = makeStyles(() => ({
   root: {
-    // position: "absolute",
+
     zIndex: "2001",
     width: "100%",
     height: "115vh",
-    // left: "50%",
-    // top: "50%",
-    // // marginTop: "100px",
-    // transform: "translate(-50%,-50%)",
-    background: "#EEEEEE",
+    background: "#ECECEE",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -28,7 +24,7 @@ const useStyles = makeStyles(() => ({
     zIndex: "2001",
   },
   header: {
-    background: "#212121",
+    background: "#2c2c25",
     height: "100px",
     zIndex: "2001",
     width: "100%",
@@ -36,6 +32,7 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     justifyContent: "center",
     color: "#EEEEEE",
+    fontWeight:"600"
   },
   container: {
     display: "flex",
@@ -51,7 +48,6 @@ const useStyles = makeStyles(() => ({
     transform: "translate(-50%,-50%)",
   },
   hBottom: {
-    width: "100%",
     background: "#3d3d3d",
     color: "#eee",
     width: "100%",
