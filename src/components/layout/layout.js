@@ -5,7 +5,7 @@ import BackgroundImage from "gatsby-background-image"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    background: "#59594A",
+    background: "#ECECEE",
 
     height: "150vh",
     margin: "0 auto",
@@ -37,6 +37,11 @@ const useStyles = makeStyles(theme => ({
   link:{
     textDecoration:"none",
     cursor:"pointer"
+  },
+  tag:{
+      textDecoration:"none",
+      color:"#fff"
+
   }
 }))
 
@@ -116,7 +121,7 @@ const Layout = props => {
               {" "}
               © {new Date().getFullYear()} Bartók és Bartók Kft.
             </Typography>
-            <Typography>Created by Pityubak</Typography>
+            <a className={classes.tag} href="https://github.com/Pityubak" target="_blank" rel='noopener noreferrer'><Typography>Created by Pityubak</Typography></a>
           </Grid>
         </BackgroundImage>
       </Grid>

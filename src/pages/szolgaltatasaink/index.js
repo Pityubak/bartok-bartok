@@ -1,11 +1,12 @@
 import Main from "../../components/main/main";
 import React from "react"
 import Layout from "../../components/layout/layout";
+import Services from "../../components/content/services";
 
 const ServicesPage=()=>(
     <Layout>
         <Main>
-            <h1>Szolgáltatásaink</h1>
+            <Services />
         </Main>
     </Layout>
 )
