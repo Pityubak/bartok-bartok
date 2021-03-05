@@ -56,6 +56,11 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     padding: ".5em 0",
   },
+  content:{
+    flexGrow:1,
+    display:"flex",
+    alignItems:"center"
+  }
 }))
 const Main = props => {
   const classes = useStyles()
@@ -69,12 +74,12 @@ const Main = props => {
           Adószakértő, Könyvelő és Tanácsadó Kft.
         </Typography>
       </div>
-      <Paper className={classes.root} elevation={3}>
-        <div>
+      <Paper className={classes.root} elevation={24}>
+        {/* <div className={classes.content}> */}
           <Header />
           {props.children}
           <RightSide />
-        </div>
+        {/* </div> */}
 
         <div className={classes.bottom}>
           <Divider />

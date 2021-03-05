@@ -4,7 +4,7 @@ import BottomNavigation from "@material-ui/core/BottomNavigation"
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction"
 
 import LocationOnIcon from "@material-ui/icons/LocationOn"
-import { BusinessCenter, SettingsApplications } from "@material-ui/icons"
+import { BusinessCenter, Face, SettingsApplications } from "@material-ui/icons"
 import { Link } from "gatsby"
 import { useDispatch, useSelector } from "react-redux"
 import { changeBottom } from "../../slices/menu"
@@ -65,9 +65,9 @@ export default function Bottom() {
      
       
         <BottomNavigationAction
-          label="Nearby"
+          label="Munkatársaink"
           value="nearby"
-          icon={<Link className={classes.link} to="/uzemelteto/"><LocationOnIcon style={style} /></Link>}
+          icon={<Link className={classes.link} to="/munkatarsaink/"><Face style={style} /></Link>}
         />
       
     </BottomNavigation>

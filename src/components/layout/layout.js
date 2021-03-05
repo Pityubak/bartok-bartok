@@ -1,16 +1,15 @@
 import { AppBar, Grid, makeStyles, Typography } from "@material-ui/core"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import React from "react"
 import BackgroundImage from "gatsby-background-image"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    background: '#59594A',
-
+    background: "#59594A",
 
     height: "150vh",
     margin: "0 auto",
-    position:"relative"
+    position: "relative",
   },
   header: {
     width: "100%",
@@ -23,11 +22,11 @@ const useStyles = makeStyles(theme => ({
   footer: {
     height: "10vh",
     width: "100%",
-    display:"flex",
-    alignItems:"center",
-    justifyContent:"flex-end",
-    color:"#eee",
-    fontSize:"2rem"
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    color: "#eee",
+    fontSize: "2rem",
   },
   main: {
     height: "105vh",
@@ -35,6 +34,10 @@ const useStyles = makeStyles(theme => ({
   container: {
     flexGrow: 1,
   },
+  link:{
+    textDecoration:"none",
+    cursor:"pointer"
+  }
 }))
 
 const Layout = props => {
@@ -74,6 +77,7 @@ const Layout = props => {
   return (
     <div className={classes.container}>
       <Grid
+     
         spacing={0}
         direction={"column"}
         alignItems="stretch"
@@ -81,16 +85,24 @@ const Layout = props => {
         className={classes.root}
       >
         <AppBar position={"static"}>
-          <BackgroundImage className={classes.bg} fluid={img?.node?.childImageSharp?.fluid}>
-            <Grid item xs={12} className={classes.header}>
-              <img
-                className={classes.logo}
-                src={logoData.src}
-                alt={"A Bartók és Bartók Kft logója"}
-              />
-
-            </Grid>
+       
+          <BackgroundImage
+            className={classes.bg}
+            fluid={img?.node?.childImageSharp?.fluid}
+          >
+       
+              <Grid item xs={12} className={classes.header}>
+              <Link className={classes.link} to="/">
+                <img
+                  className={classes.logo}
+                  src={logoData.src}
+                  alt={"A Bartók és Bartók Kft logója"}
+                />
+                 </Link>
+              </Grid>
+          
           </BackgroundImage>
+         
         </AppBar>
         {/* */}
 
@@ -100,7 +112,10 @@ const Layout = props => {
 
         <BackgroundImage fluid={img?.node?.childImageSharp?.fluid}>
           <Grid container xs={12} className={classes.footer} direction="column">
-            <Typography variant="h5"> © {new Date().getFullYear()} Bartók és Bartók Kft.</Typography>
+            <Typography variant="h5">
+              {" "}
+              © {new Date().getFullYear()} Bartók és Bartók Kft.
+            </Typography>
             <Typography>Created by Pityubak</Typography>
           </Grid>
         </BackgroundImage>

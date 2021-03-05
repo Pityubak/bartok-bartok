@@ -1,4 +1,5 @@
 import React from "react"
+import Payroll from "../../../components/content/payroll";
 import Layout from "../../../components/layout/layout";
 import Main from "../../../components/main/main";
 
@@ -6,7 +7,7 @@ import Main from "../../../components/main/main";
 const PayrollPage=()=>(
     <Layout>
         <Main>
-            <h1>Bérszámfejtés, munkaügy</h1>
+           <Payroll/>
         </Main>
     </Layout>
 )

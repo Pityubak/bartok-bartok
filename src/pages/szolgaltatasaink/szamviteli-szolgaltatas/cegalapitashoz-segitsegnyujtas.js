@@ -1,4 +1,5 @@
 import React from "react"
+import Company from "../../../components/content/company";
 import Layout from "../../../components/layout/layout";
 import Main from "../../../components/main/main";
 
@@ -6,7 +7,7 @@ import Main from "../../../components/main/main";
 const CompanyPage=()=>(
     <Layout>
         <Main>
-            <h1>Cégalapításhoz segítségnyújtás</h1>
+            <Company/>
         </Main>
     </Layout>
 )

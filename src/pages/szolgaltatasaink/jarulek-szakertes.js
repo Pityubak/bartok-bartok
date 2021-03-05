@@ -1,4 +1,5 @@
 import React from "react"
+import Juridical from "../../components/content/juridical";
 import Layout from "../../components/layout/layout";
 import Main from "../../components/main/main";
 
@@ -6,7 +7,7 @@ import Main from "../../components/main/main";
 const JuridicalPage=()=>(
     <Layout>
         <Main>
-            <h1>Igazságügyi adó és járulék szakértés</h1>
+           <Juridical/>
         </Main>
     </Layout>
 )

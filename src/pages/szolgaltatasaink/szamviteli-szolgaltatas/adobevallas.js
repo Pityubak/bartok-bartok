@@ -1,4 +1,5 @@
 import React from "react"
+import Tax from "../../../components/content/tax";
 import Layout from "../../../components/layout/layout";
 import Main from "../../../components/main/main";
 
@@ -6,7 +7,7 @@ import Main from "../../../components/main/main";
 const TaxPage=()=>(
     <Layout>
         <Main>
-            <h1>Adóbevallás</h1>
+           <Tax />
         </Main>
     </Layout>
 )
