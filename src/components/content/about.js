@@ -1,17 +1,12 @@
 import {
-  Avatar,
   Button,
-  Card,
-  CardContent,
-  CardHeader,
   Divider,
   Grid,
-  IconButton,
   makeStyles,
   Typography,
 } from "@material-ui/core"
-import { Email, ExpandMore, Phone, Send } from "@material-ui/icons"
-import { graphql, Link, useStaticQuery } from "gatsby"
+import { Send } from "@material-ui/icons"
+import {Link} from "gatsby"
 import React from "react"
 
 const useStyles = makeStyles(theme => ({

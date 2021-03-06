@@ -4,7 +4,6 @@ import {
   Grid,
   List,
   ListItem,
-  ListItemText,
   makeStyles,
   Typography,
 } from "@material-ui/core"

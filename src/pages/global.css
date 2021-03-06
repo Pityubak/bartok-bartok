@@ -19,10 +19,10 @@ body{
     font-size: 1.5rem !important;
 }
 .MuiDrawer-paperAnchorDockedRight{
-  border-left: none;
+  border: none;
 }
 .MuiBottomNavigationAction-label{
-  color:#0F8B8D;
+  color:#17A19D;
 
 }
 .MuiBottomNavigationAction-wrapper:hover .MuiBottomNavigationAction-label {
@@ -42,4 +42,8 @@ body{
 }
 .MuiSvgIcon-fontSizeLarge{
   font-size: 3rem;
+}
+.MuiTypography-h5{
+  font-size: 1.6rem;
+  font-weight: 600;
 }

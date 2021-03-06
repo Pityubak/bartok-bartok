@@ -1,4 +1,4 @@
-import { Collapse, Drawer, List, makeStyles } from "@material-ui/core"
+import { Collapse, Drawer, List, makeStyles, withStyles } from "@material-ui/core"
 import {
   Equalizer,
   ExpandLess,
@@ -11,7 +11,7 @@ import {
   Money,
   StrikethroughS,
 } from "@material-ui/icons"
-import React, { useState } from "react"
+import React from "react"
 import {
   StyledListItem,
   StyledListItemIcon,
@@ -66,6 +66,9 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
   },
 }))
+const WaveIcon=withStyles({
+  fill:""
+})
 
 const Header = () => {
   const classes = useStyles()

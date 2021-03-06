@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles"
 import BottomNavigation from "@material-ui/core/BottomNavigation"
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction"
 
-import LocationOnIcon from "@material-ui/icons/LocationOn"
 import { BusinessCenter, Face, SettingsApplications } from "@material-ui/icons"
 import { Link } from "gatsby"
 import { useDispatch, useSelector } from "react-redux"

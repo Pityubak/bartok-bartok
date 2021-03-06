@@ -1,15 +1,24 @@
 import { AppBar, Grid, makeStyles, Typography } from "@material-ui/core"
-import { graphql, Link, useStaticQuery } from "gatsby"
+import {Link} from "gatsby"
 import React from "react"
 import BackgroundImage from "gatsby-background-image"
+import { useSelector } from "react-redux"
+import DarkImage from "./dark"
+import LightImage from "./light"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    background: "#ECECEE",
+    
 
     height: "150vh",
     margin: "0 auto",
     position: "relative",
+  },
+  darkRoot:{
+    background: "#212121",
+  },
+  lightRoot:{
+    background: "#ECECEE",
   },
   header: {
     width: "100%",
@@ -17,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
-    // justifyContent: "center",
+   
   },
   footer: {
     height: "10vh",
@@ -25,8 +34,13 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
-    color: "#eee",
-    fontSize: "2rem",
+
+  },
+  dark:{
+    color:"#000"
+  },
+  light:{
+    color: "#fff",
   },
   main: {
     height: "105vh",
@@ -40,37 +54,14 @@ const useStyles = makeStyles(theme => ({
   },
   tag:{
       textDecoration:"none",
-      color:"#fff"
-
+      fontSize:"12px",
+      fontWeight:500,
   }
 }))
 
 const Layout = props => {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        allFile(filter: { dir: { regex: "/background_light/" } }) {
-          edges {
-            node {
-              id
-              childImageSharp {
-                fluid(maxWidth: 1580) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-        icon: file(relativePath: { eq: "logo2.png" }) {
-          childImageSharp {
-            fluid(quality: 90, maxWidth: 100) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-      }
-    `
-  )
+  const { darkMode }=useSelector(state=>state.theme)
+  const data = !darkMode ? DarkImage():LightImage()
   const imageData = data.allFile?.edges
   const logoData = data.icon.childImageSharp.fluid
   const classes = useStyles()
@@ -87,7 +78,7 @@ const Layout = props => {
         direction={"column"}
         alignItems="stretch"
         container
-        className={classes.root}
+        className={[classes.root, darkMode ? classes.darkRoot:classes.lightRoot].join(' ')}
       >
         <AppBar position={"static"}>
        
@@ -116,12 +107,12 @@ const Layout = props => {
         </Grid>
 
         <BackgroundImage fluid={img?.node?.childImageSharp?.fluid}>
-          <Grid container xs={12} className={classes.footer} direction="column">
+          <Grid container xs={12} className={[classes.footer, !darkMode ? classes.dark :classes.light].join(' ')} direction="column">
             <Typography variant="h5">
               {" "}
               © {new Date().getFullYear()} Bartók és Bartók Kft.
             </Typography>
-            <a className={classes.tag} href="https://github.com/Pityubak" target="_blank" rel='noopener noreferrer'><Typography>Created by Pityubak</Typography></a>
+            <a className={[classes.tag, !darkMode ? classes.dark :classes.light].join(' ')} href="https://github.com/Pityubak" target="_blank" rel='noopener noreferrer'>Created by Pityubak</a>
           </Grid>
         </BackgroundImage>
       </Grid>

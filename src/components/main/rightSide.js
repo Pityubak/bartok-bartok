@@ -1,15 +1,17 @@
 import {
-  createStyles,
   Divider,
   Drawer,
-  FormControlLabel,
   List,
   makeStyles,
-  Switch,
-  Tooltip,
+  Typography,
   withStyles,
 } from "@material-ui/core"
-import { BrightnessLow, Business, Email, Phone, SettingsBrightness } from "@material-ui/icons"
+import {
+  Business,
+  Email,
+  Phone,
+  SettingsBrightness,
+} from "@material-ui/icons"
 import React from "react"
 import {
   StyledListItem,
@@ -19,6 +21,8 @@ import {
 import Wave from "../../assets/wave.svg"
 import { graphql, useStaticQuery } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
+import { useDispatch, useSelector } from "react-redux"
+import { switchTheme } from "../../slices/themeSlice"
 
 const drawerWidth = 225
 const useStyles = makeStyles(theme => ({
@@ -57,19 +61,19 @@ const useStyles = makeStyles(theme => ({
     height: "125px",
     width: "100%",
   },
-  themeIcon:{
-    display:"flex",
-    flexDirection:"column",
-    alignItems:"center",
-    justifyContent:"center",
-    color:"#fff",
-    fontSize:"6rem",
-    cursor:"pointer",
-    transition:"all .3s ease-in",
-    '&:hover':{
-      color:"#212121"
-    }
-  }
+  themeIcon: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#fff",
+    fontSize: "6rem",
+    cursor: "pointer",
+    transition: "all .3s ease-in",
+    "&:hover": {
+      color: "#212121",
+    },
+  },
 }))
 const VerticalListItem = withStyles({
   root: {
@@ -85,6 +89,7 @@ const Icon = withStyles({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    zIndex: "3000",
   },
 })(StyledListItemIcon)
 const RightSide = () => {
@@ -107,6 +112,9 @@ const RightSide = () => {
     // `linear-gradient(153deg, rgba(33, 33, 33, .6) 0%, rgba(33, 33, 33, .6) 70%)`,
     data.bg.childImageSharp.fluid,
   ]
+
+  const { darkMode } = useSelector(state => state.theme)
+  const dispatch = useDispatch()
   return (
     <Drawer
       anchor="right"
@@ -146,12 +154,15 @@ const RightSide = () => {
           <StyledListItemText>Cégjegyzékszám: 07-01-018288</StyledListItemText>
         </StyledListItem>
       </List>
-      <Tooltip title="Sötét témára váltás" >
-        <span className={classes.themeIcon}>
-          <SettingsBrightness fontSize="large" />
-            Teszt
-        </span>
-      </Tooltip>
+      <div
+        className={classes.themeIcon}
+        onClick={() => dispatch(switchTheme(!darkMode))}
+      >
+        <SettingsBrightness fontSize="large" />
+        <Typography variant="h5">
+          {!darkMode ? "Sötét mód" : "Világos mód"}
+        </Typography>
+      </div>
       <div className={classes.wave}>
         <Wave />
       </div>
