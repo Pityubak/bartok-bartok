@@ -3,11 +3,12 @@ import { ListItem, ListItemIcon, ListItemText, withStyles } from "@material-ui/c
 export const StyledListItem=withStyles({
     root:{
         width:"100%",
-        background:"#A1171B",
-        color:"#fff",
+        background:"#ECECEE",
+        
+        color:"#212121",
         transition:"all .4s ease",
         '&:hover':{
-            background:"#781115"
+            background:"#D2D2D3",
         }
     },
 })(ListItem);
@@ -22,6 +23,6 @@ export const StyledListItemText=withStyles({
 export const StyledListItemIcon=withStyles({
     root:{
         fontSize:"30px",
-        color:"#eee",
+        color:"#212121",
     }
 })(ListItemIcon)

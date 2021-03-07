@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
   },
   darkRoot:{
-    background: "#212121",
+    background: "#36311F",
   },
   lightRoot:{
     background: "#ECECEE",
@@ -44,6 +44,7 @@ const useStyles = makeStyles(theme => ({
   },
   main: {
     height: "105vh",
+  
   },
   container: {
     flexGrow: 1,

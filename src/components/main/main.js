@@ -1,6 +1,7 @@
 import { Divider, makeStyles, Paper, Typography } from "@material-ui/core"
 import React from "react"
 import { useSelector } from "react-redux"
+import { THEME } from "../../theme/theme"
 import Bottom from "../layout/bottom"
 
 import Header from "./header"
@@ -14,14 +15,15 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-  },
-  darkRoot:{
-    background:"#212121",
-    color:"#eee"
-  },
-  lightRoot:{
     background: "#ECECEE",
   },
+  dark: {
+    background: THEME.paper,
+  },
+  light: {
+    background: THEME.light,
+  },
+
   bottom: {
     width: "100%",
     position: "absolute",
@@ -30,8 +32,7 @@ const useStyles = makeStyles(() => ({
     zIndex: "2001",
   },
   header: {
-    // background: "#2c2c25",
-
+    background: THEME.primary,
     height: "100px",
     zIndex: "2001",
     width: "100%",
@@ -40,14 +41,6 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     color: "#EEEEEE",
     fontWeight: "600",
-  },
-  dark: {
-    background: "#2c2c25",
-  
-  },
-  light: {
-    background: "#17A19D",
- 
   },
   container: {
     display: "flex",
@@ -79,10 +72,10 @@ const useStyles = makeStyles(() => ({
 }))
 const Main = props => {
   const classes = useStyles()
-  const { darkMode }=useSelector(state=>state.theme)
+  const { darkMode } = useSelector(state => state.theme)
   return (
     <div className={classes.container}>
-      <div className={[classes.header,darkMode ? classes.dark :classes.light].join(' ')}>
+      <div className={classes.header}>
         <Typography variant="h4">BARTÓK és BARTÓK</Typography>
       </div>
       <div className={classes.hBottom}>
@@ -90,13 +83,10 @@ const Main = props => {
           Adószakértő, Könyvelő és Tanácsadó Kft.
         </Typography>
       </div>
-      <Paper className={[classes.root,darkMode ? classes.darkRoot :classes.lightRoot].join(' ')} elevation={24}>
-        {/* <div className={classes.content}> */}
+      <Paper className={[classes.root,darkMode ? classes.dark:classes.light]} elevation={24}>
         <Header />
         {props.children}
         <RightSide />
-        {/* </div> */}
-
         <div className={classes.bottom}>
           <Divider />
           <Bottom />

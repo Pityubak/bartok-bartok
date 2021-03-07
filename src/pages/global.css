@@ -18,10 +18,10 @@ body{
 .MuiBottomNavigationAction-label{
     font-size: 1.5rem !important;
 }
-.MuiDrawer-paperAnchorDockedRight{
+/* .MuiDrawer-paperAnchorDockedRight{
   border: none;
-}
-.MuiBottomNavigationAction-label{
+} */
+/* .MuiBottomNavigationAction-label{
   color:#17A19D;
 
 }
@@ -32,7 +32,7 @@ body{
 .MuiBottomNavigationAction-wrapper:hover .MuiSvgIcon-root {
   color:#A1171B;
   
-}
+} */
 
 .MuiTypography-body2{
   font-size: 1.5rem;
@@ -46,4 +46,7 @@ body{
 .MuiTypography-h5{
   font-size: 1.6rem;
   font-weight: 600;
+}
+.lightSvg >path{
+  fill:"#ECECEE";
 }

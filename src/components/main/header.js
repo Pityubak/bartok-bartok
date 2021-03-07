@@ -1,4 +1,4 @@
-import { Collapse, Drawer, List, makeStyles, withStyles } from "@material-ui/core"
+import { Collapse, Drawer, List, makeStyles } from "@material-ui/core"
 import {
   Equalizer,
   ExpandLess,
@@ -17,10 +17,12 @@ import {
   StyledListItemIcon,
   StyledListItemText,
 } from "../../theme/styled"
-import Wave from "../../assets/wave.svg"
+import WaveLight from "../../assets/wave_light.svg"
+import WaveDark from "../../assets/wave_dark.svg"
 import { Link } from "gatsby"
 import { useDispatch, useSelector } from "react-redux"
 import { changeIndex, changeSelected } from "../../slices/menu"
+import { THEME } from "../../theme/theme"
 
 const drawerWidth = 225
 
@@ -39,7 +41,8 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    background: "#A1171B",
+    // background:"#ECECEE",
+    // background: "#36311F",
     position: "absolute",
     transform: "none",
   },
@@ -50,9 +53,6 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3),
   },
-  item: {
-    background: "#6A0971",
-  },
   root: {
     position: "relative",
   },
@@ -61,40 +61,79 @@ const useStyles = makeStyles(theme => ({
     bottom: 0,
     left: 0,
     paddingBottom: 10,
+    svg: {},
   },
   link: {
     textDecoration: "none",
   },
+  dark: {
+    background: THEME.dark,
+    color: THEME.light,
+    '&:hover':{
+      background:THEME.dark_hover,
+  }
+},
+darkPaper: {
+  background: THEME.dark,
+  color: THEME.light,
+
+  
+  },
+  light: {
+    background: THEME.light,
+    '&:hover':{
+      background:THEME.light_hover,
+  }
+  },
+  lightPaper: {
+    background: THEME.light,
+
+    
+  },
+  color_light:{
+    color: THEME.light,
+  },
+  color_dark:{
+    color:THEME.dark
+  }
 }))
-const WaveIcon=withStyles({
-  fill:""
-})
 
 const Header = () => {
   const classes = useStyles()
 
-
   const { index, selected } = useSelector(state => state.menu)
+  const { darkMode } = useSelector(state => state.theme)
   const dispatch = useDispatch()
+  const paper = [
+    classes.drawerPaper,
+    darkMode ? classes.darkPaper : classes.lightPaper,
+  ].join(" ")
 
   return (
     <Drawer
       className={classes.drawer}
       variant="permanent"
       classes={{
-        paper: classes.drawerPaper,
+        paper: paper,
       }}
       anchor="left"
     >
       <List>
         <Link className={classes.link} to="/bemutatkozas/">
           <StyledListItem
+            classes={{
+              root: darkMode ? classes.dark : classes.light,
+            }}
             selected={selected === 1}
             button
             key={"about"}
             onClick={() => dispatch(changeSelected(1))}
           >
-            <StyledListItemIcon>
+            <StyledListItemIcon
+              classes={{
+                root: darkMode ? classes.color_light : classes.color_dark,
+              }}
+            >
               <Info fontSize="large" />
             </StyledListItemIcon>
             <StyledListItemText primary={"Bemutatkozás"} />
@@ -102,6 +141,9 @@ const Header = () => {
         </Link>
 
         <StyledListItem
+          classes={{
+            root: darkMode ? classes.dark : classes.light,
+          }}
           selected={selected === 2}
           button
           key={"services"}
@@ -114,9 +156,13 @@ const Header = () => {
             dispatch(changeSelected(2))
           }}
         >
-          <StyledListItemText>
+          <StyledListItemIcon
+            classes={{
+              root: darkMode ? classes.color_light : classes.color_dark,
+            }}
+          >
             <Functions fontSize="large" />
-          </StyledListItemText>
+          </StyledListItemIcon>
           <StyledListItemText primary={"Szolgáltatásaink"} />
           {index === 1 ? <ExpandLess /> : <ExpandMore />}
         </StyledListItem>
@@ -127,18 +173,28 @@ const Header = () => {
               to="/szolgaltatasaink/jarulek-szakertes/"
             >
               <StyledListItem
+                classes={{
+                  root: darkMode ? classes.dark : classes.light,
+                }}
                 button
                 className={classes.nested}
                 selected={selected === 3}
                 onClick={() => dispatch(changeSelected(3))}
               >
-                <StyledListItemIcon>
+                <StyledListItemIcon
+                  classes={{
+                    root: darkMode ? classes.color_light : classes.color_dark,
+                  }}
+                >
                   <Equalizer fontSize="large" />
                 </StyledListItemIcon>
                 <StyledListItemText primary=" Igazságügyi adó és járulék szakértés" />
               </StyledListItem>
             </Link>
             <StyledListItem
+              classes={{
+                root: darkMode ? classes.dark : classes.light,
+              }}
               selected={selected === 4}
               button
               className={classes.nested}
@@ -151,7 +207,11 @@ const Header = () => {
                 dispatch(changeSelected(4))
               }}
             >
-              <StyledListItemIcon>
+              <StyledListItemIcon
+                classes={{
+                  root: darkMode ? classes.color_light : classes.color_dark,
+                }}
+              >
                 <StrikethroughS fontSize="large" />
               </StyledListItemIcon>
               <StyledListItemText primary=" Számviteli szolgáltatás" />
@@ -164,12 +224,19 @@ const Header = () => {
                   to="/szolgaltatasaink/szamviteli-szolgaltatas/adobevallas/"
                 >
                   <StyledListItem
+                    classes={{
+                      root: darkMode ? classes.dark : classes.light,
+                    }}
                     button
                     className={classes.deepNested}
                     selected={selected === 5}
                     onClick={() => dispatch(changeSelected(5))}
                   >
-                    <StyledListItemIcon>
+                    <StyledListItemIcon
+                      classes={{
+                        root: darkMode ? classes.color_light : classes.color_dark,
+                      }}
+                    >
                       <Money fontSize="large" />
                     </StyledListItemIcon>
                     <StyledListItemText primary="Adóbevallás" />
@@ -180,12 +247,19 @@ const Header = () => {
                   to="/szolgaltatasaink/szamviteli-szolgaltatas/berszamfejtes-munkaugy/"
                 >
                   <StyledListItem
+                    classes={{
+                      root: darkMode ? classes.dark : classes.light,
+                    }}
                     button
                     className={classes.deepNested}
                     selected={selected === 6}
                     onClick={() => dispatch(changeSelected(6))}
                   >
-                    <StyledListItemIcon>
+                    <StyledListItemIcon
+                      classes={{
+                        root: darkMode ? classes.color_light : classes.color_dark,
+                      }}
+                    >
                       <MonetizationOn fontSize="large" />
                     </StyledListItemIcon>
                     <StyledListItemText primary="Bérszámfejtés, munkaügy" />
@@ -196,12 +270,19 @@ const Header = () => {
                   to="/szolgaltatasaink/szamviteli-szolgaltatas/szabalyzat-keszites/"
                 >
                   <StyledListItem
+                    classes={{
+                      root: darkMode ? classes.dark : classes.light,
+                    }}
                     button
                     className={classes.deepNested}
                     selected={selected === 7}
                     onClick={() => dispatch(changeSelected(7))}
                   >
-                    <StyledListItemIcon>
+                    <StyledListItemIcon
+                      classes={{
+                        root: darkMode ? classes.color_light : classes.color_dark,
+                      }}
+                    >
                       <Gavel fontSize="large" />
                     </StyledListItemIcon>
                     <StyledListItemText primary="Szabályzat készítés" />
@@ -212,12 +293,19 @@ const Header = () => {
                   to="/szolgaltatasaink/szamviteli-szolgaltatas/cegalapitashoz-segitsegnyujtas/"
                 >
                   <StyledListItem
+                    classes={{
+                      root: darkMode ? classes.dark : classes.light,
+                    }}
                     button
                     className={classes.deepNested}
                     selected={selected === 8}
                     onClick={() => dispatch(changeSelected(8))}
                   >
-                    <StyledListItemIcon>
+                    <StyledListItemIcon
+                      classes={{
+                        root: darkMode ? classes.color_light : classes.color_dark,
+                      }}
+                    >
                       <LiveHelp fontSize="large" />
                     </StyledListItemIcon>
                     <StyledListItemText primary="Cégalapításhoz segítségnyújtás" />
@@ -228,9 +316,6 @@ const Header = () => {
           </List>
         </Collapse>
       </List>
-      <div className={classes.wave}>
-        <Wave />
-      </div>
     </Drawer>
   )
 }

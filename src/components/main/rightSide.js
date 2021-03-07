@@ -6,23 +6,20 @@ import {
   Typography,
   withStyles,
 } from "@material-ui/core"
-import {
-  Business,
-  Email,
-  Phone,
-  SettingsBrightness,
-} from "@material-ui/icons"
+import { Business, Email, Phone, SettingsBrightness } from "@material-ui/icons"
 import React from "react"
 import {
   StyledListItem,
   StyledListItemIcon,
   StyledListItemText,
 } from "../../theme/styled"
-import Wave from "../../assets/wave.svg"
+import WaveDark from "../../assets/wave_dark.svg"
+import WaveLight from "../../assets/wave_light.svg"
 import { graphql, useStaticQuery } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 import { useDispatch, useSelector } from "react-redux"
 import { switchTheme } from "../../slices/themeSlice"
+import { THEME } from "../../theme/theme"
 
 const drawerWidth = 225
 const useStyles = makeStyles(theme => ({
@@ -41,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    background: "#A1171B",
+    background: "#ECECEE",
   },
   wave: {
     position: "fixed",
@@ -54,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     margin: ".8em 0em",
     textAlign: "center",
     "&:hover": {
-      background: "#A1171B",
+      background: "#ECECEE",
     },
   },
   fluid: {
@@ -66,13 +63,49 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    color: "#fff",
+    
     fontSize: "6rem",
     cursor: "pointer",
     transition: "all .3s ease-in",
+ 
+  },
+  darkIcon:{
+    color: THEME.light,
     "&:hover": {
-      color: "#212121",
+      color: "#F7CE3B",
     },
+  },
+  lightIcon:{
+    color: "#212121",
+    "&:hover": {
+      color: THEME.primary,
+    },
+  },
+  dark: {
+    background: THEME.dark,
+    color: THEME.light,
+    "&:hover": {
+      background: THEME.dark,
+    },
+  },
+  darkPaper: {
+    background: THEME.dark,
+    color: THEME.light,
+  },
+  light: {
+    background: THEME.light,
+    "&:hover": {
+      background: THEME.light,
+    },
+  },
+  lightPaper: {
+    background: THEME.light,
+  },
+  color_light: {
+    color: THEME.light,
+  },
+  color_dark: {
+    color: THEME.dark,
   },
 }))
 const VerticalListItem = withStyles({
@@ -115,47 +148,91 @@ const RightSide = () => {
 
   const { darkMode } = useSelector(state => state.theme)
   const dispatch = useDispatch()
+  const paper = [
+    classes.drawerPaper,
+    darkMode ? classes.darkPaper : classes.lightPaper,
+  ].join(" ")
   return (
     <Drawer
       anchor="right"
       className={classes.drawer}
       variant="permanent"
       classes={{
-        paper: classes.drawerPaper,
+        paper: paper
       }}
     >
       <BackgroundImage fluid={fluid}>
         <div className={classes.fluid}></div>
       </BackgroundImage>
       <List>
-        <VerticalListItem className={classes.item}>
-          <Icon>
+        <VerticalListItem
+          classes={{
+            root: darkMode ? classes.dark : classes.light,
+          }}
+          className={classes.item}
+        >
+          <Icon
+            classes={{
+              root: darkMode ? classes.color_light : classes.color_dark,
+            }}
+          >
             <Phone fontSize="large" />
           </Icon>
           <StyledListItemText>(06 36) 789 610</StyledListItemText>
         </VerticalListItem>
-        <VerticalListItem className={classes.item}>
-          <Icon>
+        <VerticalListItem
+          classes={{
+            root: darkMode ? classes.dark : classes.light,
+          }}
+          className={classes.item}
+        >
+          <Icon
+            classes={{
+              root: darkMode ? classes.color_light : classes.color_dark,
+            }}
+          >
             <Email fontSize="large" />
           </Icon>
           <StyledListItemText>bartokbartok.kft@gmail.com</StyledListItemText>
         </VerticalListItem>
-        <VerticalListItem className={classes.item}>
-          <Icon>
+        <VerticalListItem
+          classes={{
+            root: darkMode ? classes.dark : classes.light,
+          }}
+          className={classes.item}
+        >
+          <Icon
+            classes={{
+              root: darkMode ? classes.color_light : classes.color_dark,
+            }}
+          >
             <Business fontSize="large" />
           </Icon>
           <StyledListItemText>3300, Eger, Cifrakapu u. 124</StyledListItemText>
         </VerticalListItem>
         <Divider />
-        <StyledListItem dense className={classes.item}>
+        <StyledListItem
+          classes={{
+            root: darkMode ? classes.dark : classes.light,
+          }}
+          dense
+          className={classes.item}
+        >
           <StyledListItemText>Adószám: 32984343-1-04</StyledListItemText>
         </StyledListItem>
-        <StyledListItem divider dense className={classes.item}>
+        <StyledListItem
+          classes={{
+            root: darkMode ? classes.dark : classes.light,
+          }}
+          divider
+          dense
+          className={classes.item}
+        >
           <StyledListItemText>Cégjegyzékszám: 07-01-018288</StyledListItemText>
         </StyledListItem>
       </List>
       <div
-        className={classes.themeIcon}
+        className={[classes.themeIcon, darkMode ? classes.darkIcon:classes.lightIcon].join(' ')}
         onClick={() => dispatch(switchTheme(!darkMode))}
       >
         <SettingsBrightness fontSize="large" />
@@ -163,9 +240,7 @@ const RightSide = () => {
           {!darkMode ? "Sötét mód" : "Világos mód"}
         </Typography>
       </div>
-      <div className={classes.wave}>
-        <Wave />
-      </div>
+
     </Drawer>
   )
 }
