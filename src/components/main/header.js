@@ -1,4 +1,4 @@
-import { Collapse, Drawer, List, makeStyles } from "@material-ui/core"
+import { Collapse, Drawer, List, makeStyles, useMediaQuery } from "@material-ui/core"
 import {
   Equalizer,
   ExpandLess,
@@ -11,7 +11,7 @@ import {
   Money,
   StrikethroughS,
 } from "@material-ui/icons"
-import React from "react"
+import React, { useEffect } from "react"
 import {
   StyledListItem,
   StyledListItemIcon,
@@ -101,18 +101,20 @@ darkPaper: {
 const Header = () => {
   const classes = useStyles()
 
-  const { index, selected } = useSelector(state => state.menu)
+  const { index, selected,open } = useSelector(state => state.menu)
   const { darkMode } = useSelector(state => state.theme)
   const dispatch = useDispatch()
   const paper = [
     classes.drawerPaper,
     darkMode ? classes.darkPaper : classes.lightPaper,
   ].join(" ")
-
+  const matches = useMediaQuery("(max-width:960px)")
+  
   return (
     <Drawer
       className={classes.drawer}
-      variant="permanent"
+      variant="persistent"
+      open={!matches || open}
       classes={{
         paper: paper,
       }}

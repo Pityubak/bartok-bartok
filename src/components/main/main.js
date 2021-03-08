@@ -1,8 +1,10 @@
-import { Divider, makeStyles, Paper, Typography } from "@material-ui/core"
+import { Backdrop, Divider, makeStyles, Paper, Typography, useMediaQuery } from "@material-ui/core"
 import React from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { changeDrawer } from "../../slices/menu"
 import { THEME } from "../../theme/theme"
 import Bottom from "../layout/bottom"
+import SecondaryBottom from "../layout/secondaryBottom"
 
 import Header from "./header"
 import RightSide from "./rightSide"
@@ -57,7 +59,7 @@ const useStyles = makeStyles(theme => ({
 
    
   
-    [theme.breakpoints.between(960,1280)]: {
+    [theme.breakpoints.down(1280)]: {
       width: "100%",
     },
     [theme.breakpoints.between(1280,1460)]: {
@@ -86,7 +88,10 @@ const useStyles = makeStyles(theme => ({
 const Main = props => {
   const classes = useStyles()
   const { darkMode } = useSelector(state => state.theme)
+  const { open } = useSelector(state => state.menu)
   const root = [classes.root, darkMode ? classes.dark : classes.light].join(" ")
+  const dispatch=useDispatch()
+  const matches = useMediaQuery("(max-width:960px)")
   return (
     <div className={classes.container}>
       <div className={classes.header}>
@@ -103,9 +108,11 @@ const Main = props => {
         }}
         elevation={24}
       >
-        <Header />
+        {/* {(matches && open) ? <Backdrop open={open} > */}
+          <Header />
+        {/* </Backdrop>:<Header />} */}
         {props.children}
-        <RightSide />
+       {!matches ?  <RightSide />:<SecondaryBottom/>}
         <div className={classes.bottom}>
           <Divider />
           <Bottom />
