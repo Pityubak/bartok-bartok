@@ -21,9 +21,12 @@ import { switchTheme } from "../../slices/themeSlice"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: "150vh",
+    
     margin: "0 auto",
     position: "relative",
+    [theme.breakpoints.up(960)]: {
+      height: "150vh",
+    },
   },
   darkRoot: {
     background: "#36311F",
@@ -40,7 +43,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down(960)]: {
       flexDirection: "row",
       alignItems: "flex-start",
-  
+      height: "15vh",
     },
   },
   footer: {
@@ -57,10 +60,18 @@ const useStyles = makeStyles(theme => ({
     color: "#fff",
   },
   main: {
-    height: "105vh",
+   
+    [theme.breakpoints.up(960)]: {
+      height: "105vh",
+    },
   },
   container: {
     flexGrow: 1,
+    [theme.breakpoints.down(960)]: {
+     display:"flex",
+     alignItems:"center",
+     flexDirection:"column"
+    },
   },
   link: {
     textDecoration: "none",
@@ -130,7 +141,7 @@ const Layout = props => {
           darkMode ? classes.darkRoot : classes.lightRoot,
         ].join(" ")}
       >
-        <AppBar position={"static"}>
+        <AppBar position={matches ? 'fixed':"static"}>
           <BackgroundImage
             className={classes.bg}
             fluid={img?.node?.childImageSharp?.fluid}

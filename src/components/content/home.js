@@ -1,29 +1,28 @@
 import { Divider, Grid, makeStyles, Typography } from "@material-ui/core"
 import React from "react"
+import ContentWrapper from "./contentWrapper"
 
 const useStyles = makeStyles({
-  root: {
-      
-  },
+  root: {},
   header: {
     textAlign: "center",
     margin: "1em 0em",
   },
-  typo:{
-      fontSize:"14px",
-      padding:".5em",
-      margin:".5em 0em"
-  }
+  typo: {
+    fontSize: "14px",
+    padding: ".5em",
+    margin: ".5em 0em",
+  },
 })
 const Home = () => {
   const classes = useStyles()
   return (
-    <Grid xs={6} className={classes.root} container direction="column">
+    <ContentWrapper>
       <Typography className={classes.header} variant="h3">
         Mi kerüljön a főoldalra?
       </Typography>
       <Divider />
-      <Typography className={classes.typo} >
+      <Typography className={classes.typo}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
         ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
         efficitur, pulvinar porttitor magna sagittis. Quisque aliquam dignissim
@@ -34,7 +33,7 @@ const Home = () => {
         gravida sed nibh. Proin at sapien augue. Vestibulum ante ipsum primis in
         faucibus orci luctus et ultrices posuere cubilia curae;
       </Typography>
-      <Typography className={classes.typo} >
+      <Typography className={classes.typo}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
         ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
         efficitur, pulvinar porttitor magna sagittis. Quisque aliquam dignissim
@@ -45,7 +44,7 @@ const Home = () => {
         gravida sed nibh. Proin at sapien augue. Vestibulum ante ipsum primis in
         faucibus orci luctus et ultrices posuere cubilia curae;
       </Typography>
-      <Typography className={classes.typo} >
+      <Typography className={classes.typo}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
         ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
         efficitur, pulvinar porttitor magna sagittis. Quisque aliquam dignissim
@@ -56,7 +55,7 @@ const Home = () => {
         gravida sed nibh. Proin at sapien augue. Vestibulum ante ipsum primis in
         faucibus orci luctus et ultrices posuere cubilia curae;
       </Typography>
-    </Grid>
+    </ContentWrapper>
   )
 }
 

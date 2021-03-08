@@ -4,13 +4,14 @@ import {
   Grid,
   makeStyles,
   Typography,
+  useMediaQuery,
 } from "@material-ui/core"
 import { Send } from "@material-ui/icons"
-import {Link} from "gatsby"
+import { Link } from "gatsby"
 import React from "react"
+import ContentWrapper from "./contentWrapper"
 
 const useStyles = makeStyles(theme => ({
-  root: {},
   header: {
     textAlign: "center",
     margin: "1em 0em",
@@ -33,23 +34,22 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-around",
     fontSize: "13px",
   },
-  btn:{
+  btn: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginTop:"1rem"
-  }
+    marginTop: "1rem",
+  },
 }))
 const About = () => {
-
   const classes = useStyles()
   return (
-    <Grid xs={6} className={classes.root} container direction="column">
+    <ContentWrapper>
       <Typography className={classes.header} variant="h3">
         Bemutatkozás
       </Typography>
       <Divider />
-      <Typography className={classes.typo} >
+      <Typography className={classes.typo}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
         ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
         efficitur, pulvinar porttitor magna sagittis. Quisque aliquam dignissim
@@ -61,7 +61,7 @@ const About = () => {
         faucibus orci luctus et ultrices posuere cubilia curae;
       </Typography>
       <Divider />
-      <Typography className={classes.typo} >
+      <Typography className={classes.typo}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
         ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
         efficitur, pulvinar porttitor magna sagittis. Quisque aliquam dignissim
@@ -75,12 +75,12 @@ const About = () => {
       <Divider />
       <div className={classes.btn}>
         <Link to="/munkatarsaink/">
-          <Button size="large"  endIcon={<Send />}>
+          <Button size="large" endIcon={<Send />}>
             Tovább munkatársaink bemutatkozó oldalára
           </Button>
         </Link>
       </div>
-    </Grid>
+    </ContentWrapper>
   )
 }
 

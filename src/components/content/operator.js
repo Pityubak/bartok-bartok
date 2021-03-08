@@ -1,5 +1,5 @@
 import {
-    Button,
+  Button,
   Divider,
   Grid,
   List,
@@ -10,6 +10,7 @@ import {
 import { Send } from "@material-ui/icons"
 import React from "react"
 import { StyledListItemText } from "../../theme/styled"
+import ContentWrapper from "./contentWrapper"
 
 const useStyles = makeStyles({
   root: {},
@@ -22,17 +23,17 @@ const useStyles = makeStyles({
     padding: ".5em",
     margin: ".5em 0em",
   },
-  btn:{
+  btn: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginTop:"1rem"
-  }
+    marginTop: "1rem",
+  },
 })
 const Operator = () => {
   const classes = useStyles()
   return (
-    <Grid xs={6} className={classes.root} container direction="column">
+    <ContentWrapper>
       <Typography className={classes.header} variant="h3">
         Üzemeltető
       </Typography>
@@ -57,25 +58,32 @@ const Operator = () => {
           <StyledListItemText>Telefon: (06 36) 789 610</StyledListItemText>
         </ListItem>
         <ListItem>
-          <StyledListItemText>Email: bartokbartok.kft@gmail.com</StyledListItemText>
+          <StyledListItemText>
+            Email: bartokbartok.kft@gmail.com
+          </StyledListItemText>
         </ListItem>
         <ListItem>
-          <StyledListItemText>Kamara: Heves Megyei Kereskedelmi és Iparkamara</StyledListItemText>
+          <StyledListItemText>
+            Kamara: Heves Megyei Kereskedelmi és Iparkamara
+          </StyledListItemText>
         </ListItem>
       </List>
-      <Divider/>
+      <Divider />
       <Typography className={classes.header} variant="h5">
         A weboldal tárhelyszolgáltatója: <strong>Netlify</strong>
       </Typography>
       <div className={classes.btn}>
-        <a href="https://www.netlify.com/" target="_blank" rel='noopener noreferrer'>
-          <Button size="large"  endIcon={<Send />}>
+        <a
+          href="https://www.netlify.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button size="large" endIcon={<Send />}>
             Tovább a tárhelyszolgátató oldalára
           </Button>
         </a>
       </div>
-
-    </Grid>
+    </ContentWrapper>
   )
 }
 

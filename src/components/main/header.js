@@ -1,5 +1,14 @@
-import { Collapse, Drawer, List, makeStyles, useMediaQuery } from "@material-ui/core"
 import {
+  Collapse,
+  Drawer,
+  IconButton,
+  List,
+  makeStyles,
+  useMediaQuery,
+} from "@material-ui/core"
+import {
+  ChevronLeft,
+  ChevronRight,
   Equalizer,
   ExpandLess,
   ExpandMore,
@@ -21,7 +30,7 @@ import WaveLight from "../../assets/wave_light.svg"
 import WaveDark from "../../assets/wave_dark.svg"
 import { Link } from "gatsby"
 import { useDispatch, useSelector } from "react-redux"
-import { changeIndex, changeSelected } from "../../slices/menu"
+import { changeDrawer, changeIndex, changeSelected } from "../../slices/menu"
 import { THEME } from "../../theme/theme"
 
 const drawerWidth = 225
@@ -69,39 +78,41 @@ const useStyles = makeStyles(theme => ({
   dark: {
     background: THEME.dark,
     color: THEME.light,
-    '&:hover':{
-      background:THEME.dark_hover,
-  }
-},
-darkPaper: {
-  background: THEME.dark,
-  color: THEME.light,
-
-  
+    "&:hover": {
+      background: THEME.dark_hover,
+    },
+  },
+  darkPaper: {
+    background: THEME.dark,
+    color: THEME.light,
   },
   light: {
     background: THEME.light,
-    '&:hover':{
-      background:THEME.light_hover,
-  }
+    "&:hover": {
+      background: THEME.light_hover,
+    },
   },
   lightPaper: {
     background: THEME.light,
-
-    
   },
-  color_light:{
+  color_light: {
     color: THEME.light,
   },
-  color_dark:{
-    color:THEME.dark
+  color_dark: {
+    color: THEME.dark,
+  },
+  back:{
+    width:"100%",
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"flex-end",
   }
 }))
 
 const Header = () => {
   const classes = useStyles()
 
-  const { index, selected,open } = useSelector(state => state.menu)
+  const { index, selected, open } = useSelector(state => state.menu)
   const { darkMode } = useSelector(state => state.theme)
   const dispatch = useDispatch()
   const paper = [
@@ -109,7 +120,7 @@ const Header = () => {
     darkMode ? classes.darkPaper : classes.lightPaper,
   ].join(" ")
   const matches = useMediaQuery("(max-width:960px)")
-  
+
   return (
     <Drawer
       className={classes.drawer}
@@ -121,6 +132,13 @@ const Header = () => {
       anchor="left"
     >
       <List>
+        {matches && (
+          <div className={classes.back}>
+            <IconButton onClick={() => dispatch(changeDrawer(!open))}>
+              <ChevronLeft fontSize="large" />
+            </IconButton>
+          </div>
+        )}
         <Link className={classes.link} to="/bemutatkozas/">
           <StyledListItem
             classes={{
@@ -236,7 +254,9 @@ const Header = () => {
                   >
                     <StyledListItemIcon
                       classes={{
-                        root: darkMode ? classes.color_light : classes.color_dark,
+                        root: darkMode
+                          ? classes.color_light
+                          : classes.color_dark,
                       }}
                     >
                       <Money fontSize="large" />
@@ -259,7 +279,9 @@ const Header = () => {
                   >
                     <StyledListItemIcon
                       classes={{
-                        root: darkMode ? classes.color_light : classes.color_dark,
+                        root: darkMode
+                          ? classes.color_light
+                          : classes.color_dark,
                       }}
                     >
                       <MonetizationOn fontSize="large" />
@@ -282,7 +304,9 @@ const Header = () => {
                   >
                     <StyledListItemIcon
                       classes={{
-                        root: darkMode ? classes.color_light : classes.color_dark,
+                        root: darkMode
+                          ? classes.color_light
+                          : classes.color_dark,
                       }}
                     >
                       <Gavel fontSize="large" />
@@ -305,7 +329,9 @@ const Header = () => {
                   >
                     <StyledListItemIcon
                       classes={{
-                        root: darkMode ? classes.color_light : classes.color_dark,
+                        root: darkMode
+                          ? classes.color_light
+                          : classes.color_dark,
                       }}
                     >
                       <LiveHelp fontSize="large" />

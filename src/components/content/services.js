@@ -12,6 +12,7 @@ import {
 import { ExpandMore } from "@material-ui/icons"
 import { Link } from "gatsby"
 import React from "react"
+import ContentWrapper from "./contentWrapper"
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -43,7 +44,7 @@ const Services = () => {
     setExpanded(isExpanded ? panel : false)
   }
   return (
-    <Grid xs={6} className={classes.root} container direction="column">
+    <ContentWrapper>
       <Typography className={classes.header} variant="h3">
         Szolgáltatásaink
       </Typography>
@@ -118,7 +119,7 @@ const Services = () => {
             </Typography>
           </AccordionDetails>
           <AccordionActions>
-            <Link  to="/szolgaltatasaink/szamviteli-szolgaltatas/berszamfejtes-munkaugy/">
+            <Link to="/szolgaltatasaink/szamviteli-szolgaltatas/berszamfejtes-munkaugy/">
               <Button size="large">Tovább olvasom</Button>
             </Link>
           </AccordionActions>
@@ -175,7 +176,7 @@ const Services = () => {
           </AccordionActions>
         </Accordion>
       </div>
-    </Grid>
+    </ContentWrapper>
   )
 }
 
