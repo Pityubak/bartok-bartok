@@ -21,7 +21,6 @@ import { switchTheme } from "../../slices/themeSlice"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    
     margin: "0 auto",
     position: "relative",
     [theme.breakpoints.up(960)]: {
@@ -60,7 +59,6 @@ const useStyles = makeStyles(theme => ({
     color: "#fff",
   },
   main: {
-   
     [theme.breakpoints.up(960)]: {
       height: "105vh",
     },
@@ -68,9 +66,9 @@ const useStyles = makeStyles(theme => ({
   container: {
     flexGrow: 1,
     [theme.breakpoints.down(960)]: {
-     display:"flex",
-     alignItems:"center",
-     flexDirection:"column"
+      display: "flex",
+      alignItems: "center",
+      flexDirection: "column",
     },
   },
   link: {
@@ -85,11 +83,11 @@ const useStyles = makeStyles(theme => ({
   toolbar: {
     width: "100%",
     zIndex: "4000",
-    background: THEME.light,
+    // background: THEME.light,
     color: "red",
-    display:"flex",
-    alignItems:"center",
-    justifyContent:"space-between"
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   themeIcon: {
     display: "flex",
@@ -100,6 +98,12 @@ const useStyles = makeStyles(theme => ({
     fontSize: "6rem",
     cursor: "pointer",
     transition: "all .3s ease-in",
+  },
+  darkToolbar: {
+    background: THEME.dark,
+  },
+  lightToolbar: {
+    background: THEME.light,
   },
   darkIcon: {
     color: THEME.light,
@@ -141,20 +145,25 @@ const Layout = props => {
           darkMode ? classes.darkRoot : classes.lightRoot,
         ].join(" ")}
       >
-        <AppBar position={matches ? 'fixed':"static"}>
+        <AppBar position={matches ? "fixed" : "static"}>
           <BackgroundImage
             className={classes.bg}
             fluid={img?.node?.childImageSharp?.fluid}
           >
             <Grid item xs={12} className={classes.header}>
               {matches ? (
-                <Toolbar className={classes.toolbar}>
+                <Toolbar
+                  className={[
+                    classes.toolbar,
+                    darkMode ? classes.darkToolbar : classes.lightToolbar,
+                  ].join(" ")}
+                >
                   <IconButton
                     aria-label="open drawer"
                     onClick={() => dispatch(changeDrawer(!open))}
                     edge="start"
                     size="medium"
-                    color="primary"
+                    className={darkMode ? classes.darkIcon : classes.lightIcon}
                     // className={clsx(classes.menuButton, open && classes.hide)}
                   >
                     <MenuOpen fontSize="large" />

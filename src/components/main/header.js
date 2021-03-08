@@ -134,7 +134,7 @@ const Header = () => {
       <List>
         {matches && (
           <div className={classes.back}>
-            <IconButton onClick={() => dispatch(changeDrawer(!open))}>
+            <IconButton className={darkMode ? classes.dark :classes.light} onClick={() => dispatch(changeDrawer(!open))}>
               <ChevronLeft fontSize="large" />
             </IconButton>
           </div>
