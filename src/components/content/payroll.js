@@ -18,12 +18,12 @@ const useStyles = makeStyles({
 const Payroll = () => {
   const classes = useStyles()
   return (
-    <Grid xs={6} className={classes.root} container direction="column">
+    <Grid item xs={6} className={classes.root} container direction="column">
       <Typography className={classes.header} variant="h3">
        Bérszámfejtés, munkaügy
       </Typography>
       <Divider />
-      <Typography className={classes.typo} variant="p">
+      <Typography className={classes.typo} >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
         ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
         efficitur, pulvinar porttitor magna sagittis. Quisque aliquam dignissim
@@ -34,7 +34,7 @@ const Payroll = () => {
         gravida sed nibh. Proin at sapien augue. Vestibulum ante ipsum primis in
         faucibus orci luctus et ultrices posuere cubilia curae;
       </Typography>
-      <Typography className={classes.typo} variant="p">
+      <Typography className={classes.typo}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
         ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
         efficitur, pulvinar porttitor magna sagittis. Quisque aliquam dignissim
@@ -45,7 +45,7 @@ const Payroll = () => {
         gravida sed nibh. Proin at sapien augue. Vestibulum ante ipsum primis in
         faucibus orci luctus et ultrices posuere cubilia curae;
       </Typography>
-      <Typography className={classes.typo} variant="p">
+      <Typography className={classes.typo} >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
         ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
         efficitur, pulvinar porttitor magna sagittis. Quisque aliquam dignissim

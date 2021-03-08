@@ -7,7 +7,7 @@ import Bottom from "../layout/bottom"
 import Header from "./header"
 import RightSide from "./rightSide"
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     zIndex: "2001",
     width: "100%",
@@ -54,6 +54,18 @@ const useStyles = makeStyles(() => ({
     top: "50%",
     marginTop: "40px",
     transform: "translate(-50%,-50%)",
+
+   
+  
+    [theme.breakpoints.between(960,1280)]: {
+      width: "100%",
+    },
+    [theme.breakpoints.between(1280,1460)]: {
+      width: "80%",
+    },
+    [theme.breakpoints.between("ml","xl")]: {
+      width: "70%",
+    },
   },
   hBottom: {
     background: "#3d3d3d",
@@ -70,9 +82,11 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
   },
 }))
+
 const Main = props => {
   const classes = useStyles()
   const { darkMode } = useSelector(state => state.theme)
+  const root = [classes.root, darkMode ? classes.dark : classes.light].join(" ")
   return (
     <div className={classes.container}>
       <div className={classes.header}>
@@ -83,7 +97,12 @@ const Main = props => {
           Adószakértő, Könyvelő és Tanácsadó Kft.
         </Typography>
       </div>
-      <Paper className={[classes.root,darkMode ? classes.dark:classes.light]} elevation={24}>
+      <Paper
+        classes={{
+          root: root,
+        }}
+        elevation={24}
+      >
         <Header />
         {props.children}
         <RightSide />

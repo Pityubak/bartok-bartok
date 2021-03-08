@@ -49,7 +49,7 @@ const About = () => {
         Bemutatkozás
       </Typography>
       <Divider />
-      <Typography className={classes.typo} variant="p">
+      <Typography className={classes.typo} >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
         ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
         efficitur, pulvinar porttitor magna sagittis. Quisque aliquam dignissim
@@ -61,7 +61,7 @@ const About = () => {
         faucibus orci luctus et ultrices posuere cubilia curae;
       </Typography>
       <Divider />
-      <Typography className={classes.typo} variant="p">
+      <Typography className={classes.typo} >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
         ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
         efficitur, pulvinar porttitor magna sagittis. Quisque aliquam dignissim

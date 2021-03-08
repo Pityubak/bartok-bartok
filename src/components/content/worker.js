@@ -105,7 +105,7 @@ import {
             }
           />
           <CardContent>
-          <Typography className={classes.typo} variant="p">
+          <Typography className={classes.typo} >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
           ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
           efficitur, pulvinar porttitor magna sagittis.
@@ -145,7 +145,7 @@ import {
             }
           />
           <CardContent>
-          <Typography className={classes.typo} variant="p">
+          <Typography className={classes.typo} >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
           ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
           efficitur, pulvinar porttitor magna sagittis.
@@ -185,7 +185,7 @@ import {
             }
           />
           <CardContent>
-          <Typography className={classes.typo} variant="p">
+          <Typography className={classes.typo} >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
           ultricies magna, consequat vehicula ligula. Donec posuere sem vel felis
           efficitur, pulvinar porttitor magna sagittis.

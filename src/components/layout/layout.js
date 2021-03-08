@@ -108,7 +108,7 @@ const Layout = props => {
         </Grid>
 
         <BackgroundImage fluid={img?.node?.childImageSharp?.fluid}>
-          <Grid container xs={12} className={[classes.footer, !darkMode ? classes.dark :classes.light].join(' ')} direction="column">
+          <Grid container  className={[classes.footer, !darkMode ? classes.dark :classes.light].join(' ')} direction="column">
             <Typography variant="h5">
               {" "}
               © {new Date().getFullYear()} Bartók és Bartók Kft.
